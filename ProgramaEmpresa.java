@@ -1,154 +1,138 @@
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.List;
 
-public class ProgramaEmpresa {
+public class ProgramaEmpresa {  
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
 
-        String nome;
-        String cnpj;
-        String endereco;
+    List<Empresa> listEmpresas = new ArrayList<Empresa>(); 
+    List<Funcionario> listFuncionarios = new ArrayList<Funcionario>();
+    List<Carro> listCarros = new ArrayList<Carro>();
+    Boolean menu = true;
+    Scanner leitor = new Scanner(System.in);
+    
 
+    do {
+
+        System.out.println("Bem vindo!!!");
+        System.out.println("1 - Criar nova empresa");
+        System.out.println("2 - Criar pessoa");
+        System.out.println("3 - Contratar");
+        System.out.println("4 - Demitir");
+        System.out.println("0 - Sair");
+        System.out.print("Digite a opcao: ");
+
+    int opcaoSelecionada = leitor.nextInt();
+    switch (opcaoSelecionada) {
         
-        List<Empresa> listEmpresas = new ArrayList <Empresa>();
-        List<Pessoa> listPessoas = new ArrayList <Pessoa>();
-
+        case 1:
+        Empresa emp = new Empresa();
+        System.out.println("Digite o nome da empresa: ");
+        String nome = leitor.next().trim().toLowerCase();
+        System.out.println("Digite o CNPJ: ");
+        String cnpj = leitor.next().trim();
+        System.out.println("Digite o endereco: ");
+        String endereco = leitor.next().trim().toLowerCase();
         emp.setNome(nome);
         emp.setCnpj(cnpj);
         emp.setEndereco(endereco);
-            for (int contador = 0; contador < listEmpresas.size(); contador++) {
-            Empresa empresaTemporaria = (Empresa) listEmpresas.get(contador);
-            if (empresaTemporaria.getNome().equals(nome) && empresaTemporaria.getCnpj().equals(cnpj) ) {
-            System.out.println("A empresa ou CNPJ ja existe");
-            }
-            else{
 
-
-                listaEmpresas.add(emp);
-            for (int contador2 = 0; contador2 < listEmpresas.size(); contador2++) {
-                empresaTemporaria = (Empresa) listEmpresas.get(contador2);
-                System.out.println ("empresa adicionada com sucesso");
-                System.out.println("Nome: " + empresaTemporaria.getNome());
-                System.out.println("CNPJ: " + empresaTemporaria.getCnpj());
-                System.out.println("Endereco: "+ empresaTemporaria.getEndereco());
-
-            }
-
-        //Empresa emp = new Empresa();
-        // emp.setNome("minha empresa");
-        // emp.setFaturamento(10000000);
-        
-        // listaEmpresa.add(emp);
-        
-        // Empresa empresa1 = new Empresa();
-        // empresa1.setNome("Empresa Bancaria");
-        // empresa1.setCnpj("12.333.333/0001-99");
-        // Scanner leitor = new Scanner(System.in);
-
-        int opcao;
-        int opcao2;
-
-        do{
-        
-        System.out.println("Bem vindo!!!");
-        System.out.println("-------------");
-        System.out.println("1 - Criar empresa");
-        System.out.println("2 - Criar uma pessoa");
-        System.out.println("3 - Contratar pessoa");
-        System.out.println("4 - Demitir pessoa");
-        System.out.println("0 - Sair");
-
-        switch(opcao){
-            case 1:
-            break;
-            case 2:
-            System.out.println("Funcionario possui carro? 5 - Sim 6 - nao");
-            switch(opcao2){
-                case 5:
-                System.out.println("Qual o modelo do carro");                
-                break;
-                case 6:
-                break;
-                default:
-                System.out.println("opcao invalida");
-                break;
-            }
-
-
-            }
-            break;
-            case 3:
-            break;
-            case 4:
-            break;
-            case 0:
-            System.out.println("Opcao invalida");
-            break;
-
+        if (listEmpresas.size() == 0) {
+            listEmpresas.add(emp);
+            System.out.println("Empresa adicionada.");
+            System.out.println("Empresa: " + emp.getNome()); 
+            System.out.println("CNPJ: " + emp.getCnpj()); 
+            System.out.println("Endereco: " + emp.getEndereco()); 
             
-
-
-
+            menu = true;
+            } else {
+            for (int contador = 0; contador < listEmpresas.size(); contador++) {
+            Empresa EmpresaTemporaria = (Empresa) listEmpresas.get(contador);
+            emp.setNome(nome);
+            emp.setCnpj(cnpj);
+            emp.setEndereco(endereco);   
+                if (EmpresaTemporaria.getNome().equals(nome) && EmpresaTemporaria.getCnpj().equals(cnpj) ) {
+                    System.out.println("Empresa ja existe no cadastro"); 
+                } else {
+                    
+                    System.out.println("Empresa adicionada!");
+                    System.out.println("Empresa: " + emp.getNome()); 
+                    System.out.println("CNPJ: " + emp.getCnpj()); 
+                    System.out.println("Endereco]: " + emp.getEndereco()); 
+                    
+                    menu = true;
+                    
+                }
+            }
+                    listEmpresas.add(emp);
+        }
         
+    
+        break;
+        case 2:
+        Funcionario fun = new Funcionario();
+        System.out.println("Digite o nome do funcionario: ");
+        String nomeFuncionario = leitor.next().trim().toLowerCase();
+        System.out.println("Digite a data de nascimento: ");
+        Date nascimento = leitor.next().trim();
+        System.out.println("Digite a matricula: ");
+        String matricula = leitor.next().trim().toLowerCase();
+        fun.setNome(nomeFuncionario);
+        fun.setNascimento(nascimento);
+        fun.setMatricula(matricula);
 
-    }while (opcao != 0);
-    }}{}
+        if (listFuncionarios.size() == 0) {
+            listFuncionarios.add(fun);
+            System.out.println("Funcionario adicionado.");
+            System.out.println("Funcionario: " + fun.getNome()); 
+            System.out.println("CNPJ: " + fun.getNascimento()); 
+            System.out.println("Endereco: " + fun.getMatricula()); 
+            
+            menu = true;
+            } else {
+            for (int contador = 0; contador < listFuncionarios.size(); contador++) {
+            Funcionario funcionarioTemporario = (Funcionario) listFuncionarios.get(contador);
+            fun.setNome(nome);
+            fun.setNascimento(nascimento);
+            fun.setMatricula(matricula);   
+                if (funcionarioTemporario.getNome().equals(nome) && funcionarioTemporario.getNascimento().equals(cnpj) ) {
+                    System.out.println("Funcionario ja existe"); 
+                } else {
+                    
+                    System.out.println("Funcionario Adicionado!");
+                    System.out.println("Nome: " + fun.getNome()); 
+                    System.out.println("Nascimento: " + fun.getNascimento()); 
+                    System.out.println("Matricula: " + fun.getMatricula()); 
+                    
+                    menu = true;
+                    
+                }
+            }
+                    listEmpresas.add(emp);
+        }
+        break;
 
-        // Empresa empresa1 = new Empresa();
-        // empresa1.setNome("Empresa Bancaria");
-        // empresa1.setCnpj("12.345.678/0001-99");
-        // empresa1.setDataFundacao(new Date());
-        // empresa1.setFaturamento(99999);
-        // empresa1.setEndereco("Rua do Limoeiro, 50");
+        case 3:
+        menu = true;
+        break;
 
-        // empresa1.imprimirResumo();
+        case 4:
+        menu = true;
+        break;
 
-        // Funcionario funcionario1 = new Funcionario(); // Herda de pessoa
-        // funcionario1.setNome("José Marques");
-        // funcionario1.setMatricula("01234");
-        // funcionario1.setEndereco("Rua da chuva, 99");
-        // funcionario1.setSalario(10000.00);
-
-        // empresa1.contratacao(funcionario1);
-
-        // Carro carro1 = new Carro();
-        // carro1.setAno(2000);
-        // carro1.setModelo("ABC");
-        // carro1.setPlaca("XVC-9900");
-        // carro1.setValor(120000.00);
-
-        // funcionario1.setCarro(carro1);
-
-        // Pessoa pessoa = funcionario1; // Funcionario
-        // System.out.println(pessoa.getNome());
-        // System.out.println(funcionario1.getNome());
-
-        // Funcionario func = (Funcionario) pessoa;
-        // System.out.println(func.getSalario());
-
-        // Pessoa pessoaAleatorio = new Pessoa();
-        // pessoaAleatorio.setNome("Charles");
-
-        // Carro carro2 = new Carro();
-        // carro2.setModelo("Ferrari");
-
-        // adicionarCarro(carro1, funcionario1);
-        // // adicionarCarro(carro2, pessoaAleatorio);
-
-        // for (int contador = 0; contador < empresa1.getListaFuncionarios().size(); contador++) {
-        //     Funcionario elemento = empresa1.getListaFuncionarios().get(contador);
-
-        //     System.out.println("---- Dados dos Funcionarios ----");
-        //     System.out.println(elemento.getNome());
-        //     System.out.println(elemento.getSalario());
-        //     System.out.println(elemento.getCarro().getModelo() + " - " + elemento.getCarro().getAno());
-        // }
-
+        case 0:
+        menu = false;
+        break;
+    
+        default:
+        System.out.println("opcao invalida");
+        menu = false;
+            break;
     }
 
-    public static void adicionarCarro(Carro carro, Pessoa pessoa) {
-        pessoa.setCarro(carro);
-    }
+} while (menu == true);
+
+leitor.close();
+ }
 }
