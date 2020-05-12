@@ -9,16 +9,37 @@ public class ProgramaEmpresa {
         
         List<Empresa> listEmpresa = new ArrayList<Empresa>();
 
-        Empresa emp = new Empresa();
-        emp.setNome("minha empresa");
-        emp.setFaturamento(10000000);
+        emp.setNome(nome);
+        emp.setCPNJ(CNPJ);
+        emp.setEndereco(endereco);
+            for (int contador = 0; contador < listEmpresas.size(); contador++) {
+            Empresa EmpresaTemporaria = (Empresa) listEmpresas.get(contador);
+            if empresatemporaria.getnome().equals(nome) && empresatemporaria.getcnpj().equals(cnpj) ) {
+            System.out.println("A empresa ou CNPJ ja existe");
+    }
+    else{
+
+
+        listaEmpresas.add(emp);
+            for (int contador2 = 0; contador2 < listEmpresas.size(); contador2++) {
+        EmpresaTemporaria = (Empresa) listEmpresas.get(contador2);
+        System.out.println ("empresa adicionada com sucesso");
+        System.out.println("Nome: " + EmpresaTemporaria.getNome());
+        System.out.println("CNPJ: " + EmpresaTemporaria.getCNPJ());
+        System.out.println("Endereco: "+ EmpresaTemporaria.getEndereco());
+
+}
+
+        //Empresa emp = new Empresa();
+        // emp.setNome("minha empresa");
+        // emp.setFaturamento(10000000);
         
-        listaEmpresa.add(emp);
+        // listaEmpresa.add(emp);
         
-        Empresa empresa1 = new Empresa();
-        empresa1.setNome("Empresa Bancaria");
-        empresa1.setCnpj("12.333.333/0001-99");
-        Scanner leitor = new Scanner(System.in);
+        // Empresa empresa1 = new Empresa();
+        // empresa1.setNome("Empresa Bancaria");
+        // empresa1.setCnpj("12.333.333/0001-99");
+        // Scanner leitor = new Scanner(System.in);
 
         int opcao;
 
@@ -38,7 +59,7 @@ public class ProgramaEmpresa {
             case 2:
             switch{
                 case 1:
-                System.out.print("Funcionario possui carro? 1 - Sim 2 - nao");
+                System.out.println("Funcionario possui carro? 1 - Sim 2 - nao");
                 break;
                 default:
                 System.out.println("opcao invalida");
